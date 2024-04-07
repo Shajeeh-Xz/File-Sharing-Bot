@@ -1,5 +1,7 @@
-python
 #(©)CodeXBotz
+
+
+
 
 import os
 import asyncio
@@ -13,10 +15,11 @@ from config import ADMINS, FORCE_MSG, START_MSG, CUSTOM_CAPTION, DISABLE_CHANNEL
 from helper_func import subscribed, encode, decode, get_messages
 from database.database import add_user, del_user, full_userbase, present_user
 
+
+
+
 @Bot.on_message(filters.command('start') & filters.private & subscribed)
 async def start_command(client: Client, message: Message):
-    await message.reply("...")
-
     id = message.from_user.id
     if not await present_user(id):
         try:
@@ -85,8 +88,8 @@ async def start_command(client: Client, message: Message):
         reply_markup = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("😊 About Me", callback_data = "about"),
-                    InlineKeyboardButton("🔒 Close", callback_data = "close")
+                    InlineKeyboardButton("👁️EPISODE CHANNEL 📂", callback_data = "about")
+                    
                 ]
             ]
         )
@@ -104,6 +107,7 @@ async def start_command(client: Client, message: Message):
         )
         return
 
+    
 #=====================================================================================##
 
 WAIT_MSG = """"<b>Processing ...</b>"""
@@ -112,6 +116,8 @@ REPLY_ERROR = """<code>Use this command as a replay to any telegram message with
 
 #=====================================================================================##
 
+    
+    
 @Bot.on_message(filters.command('start') & filters.private)
 async def not_joined(client: Client, message: Message):
     buttons = [
@@ -141,7 +147,7 @@ async def not_joined(client: Client, message: Message):
                 mention = message.from_user.mention,
                 id = message.from_user.id
             ),
-        reply_markup = None,  # Removed the reply_markup
+        reply_markup = InlineKeyboardMarkup(buttons),
         quote = True,
         disable_web_page_preview = True
     )
