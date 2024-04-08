@@ -10,8 +10,7 @@ async def cb_handler(client: Bot, query: CallbackQuery):
     data = query.data
     if data == "about":
         await query.message.edit_text(
-            text = f"<b>JOIN NOW 👉 @TM_BIGGBOSS</b>",
-            )
+            text = f"<b>JOIN NOW 👉 @TM_BIGGBOSS</b>",)
         )
     elif data == "close":
         await query.message.delete()
